@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <record id="elec_bill_view" model="ir.ui.view">
+            <field name="name">electric.meter.bill.list</field>
+            <field name="model">electric.meter</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!--<field name="name" />-->
+                    <field name="elec_current" />
+                    <field name="elec_voltage" />
+                    <field name="elec_electricity" />
+                    <field name="create_date" />
+                </tree>
+            </field>
+        </record>
+        <record id="elec_bill_form" model="ir.ui.view">
+            <field name="name">electric.meter.bill.form</field>
+            <field name="model">electric.meter</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <!--<field name="name" />-->
+                            <field name="elec_current" />
+                            <field name="elec_voltage" />
+                            <field name="elec_electricity" />
+                            <field name="create_date" />
+                        </group>
+                        <!--<field name="bills_ids" string="单据模型"/>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--<record id="elec_bill_form" model="ir.ui.view">-->
+            <!--<field name="name">electric.meter.graph</field>-->
+            <!--<field name="model">electric.meter</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--&lt;!&ndash;<graph string="">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<field name="坐标，用于显示被统计的个体名"&ndash;&gt;-->
+                    <!--&lt;!&ndash;<field name="指标" type="row/measure"/> #指定统计的指标，以内容来统计。type指定统计的方式：按行统计还是按字段类型统计&ndash;&gt;-->
+                <!--&lt;!&ndash;</graph>&ndash;&gt;-->
+                <!--<graph string="Total idea score by Inventor" type="line">-->
+                    <!--<field name="write_date"/>-->
+                    <!--<field name="elec_current" type="row" string="elec_current"/>-->
+                <!--</graph>-->
+            <!--</field>-->
+        <!--</record>-->
+        <record id="electric_meter_graph_date" model="ir.ui.view">
+            <field name="name">electric.meter.graph</field>
+            <field name="model">electric.meter</field>
+            <field name="arch" type="xml">
+                <graph string="Account Statistics" type="bar" stacked="True">
+                    <field name="create_date" interval="month"/>
+                    <!--measure-->
+                    <field name="elec_current" type='measure'/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record id="elec_bill" model="ir.actions.act_window">
+            <field name="name">elec-meter</field>
+            <field name="res_model">electric.meter</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <menuitem id="menu_elec_bill" name="electric-meter" parent="menu_elec_root" action="elec_bill" groups="base.group_user"></menuitem>
+    </data>
+</odoo>
