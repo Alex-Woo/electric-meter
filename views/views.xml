@@ -5,11 +5,12 @@
             <field name="model">electric.meter</field>
             <field name="arch" type="xml">
                 <tree>
-                    <!--<field name="name" />-->
+                    <!--<field name="id" />-->
+                    <field name="elec_id"/>
                     <field name="elec_current" />
                     <field name="elec_voltage" />
                     <field name="elec_electricity" />
-                    <field name="create_date" />
+                    <field name="elec_str" />
                 </tree>
             </field>
         </record>
@@ -20,37 +21,23 @@
                 <form>
                     <sheet>
                         <group>
-                            <!--<field name="name" />-->
+                            <!--<field name="id" />-->
+                            <field name="elec_id"/>
                             <field name="elec_current" />
                             <field name="elec_voltage" />
                             <field name="elec_electricity" />
-                            <field name="create_date" />
+                            <field name="elec_str" />
                         </group>
-                        <!--<field name="bills_ids" string="单据模型"/>-->
                     </sheet>
                 </form>
             </field>
         </record>
-        <!--<record id="elec_bill_form" model="ir.ui.view">-->
-            <!--<field name="name">electric.meter.graph</field>-->
-            <!--<field name="model">electric.meter</field>-->
-            <!--<field name="arch" type="xml">-->
-                <!--&lt;!&ndash;<graph string="">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<field name="坐标，用于显示被统计的个体名"&ndash;&gt;-->
-                    <!--&lt;!&ndash;<field name="指标" type="row/measure"/> #指定统计的指标，以内容来统计。type指定统计的方式：按行统计还是按字段类型统计&ndash;&gt;-->
-                <!--&lt;!&ndash;</graph>&ndash;&gt;-->
-                <!--<graph string="Total idea score by Inventor" type="line">-->
-                    <!--<field name="write_date"/>-->
-                    <!--<field name="elec_current" type="row" string="elec_current"/>-->
-                <!--</graph>-->
-            <!--</field>-->
-        <!--</record>-->
         <record id="electric_meter_graph_date" model="ir.ui.view">
             <field name="name">electric.meter.graph</field>
             <field name="model">electric.meter</field>
             <field name="arch" type="xml">
-                <graph string="Account Statistics" type="bar" stacked="True">
-                    <field name="create_date" interval="month"/>
+                <graph string="Account Statistics" type="line" stacked="True">
+                    <field name="elec_str"/>
                     <!--measure-->
                     <field name="elec_current" type='measure'/>
                 </graph>
